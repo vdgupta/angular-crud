@@ -1,0 +1,39 @@
+<div class="heading">
+    <h2>Employeee List</h2> 
+    </div>
+  <div class="container">
+  
+    <button [routerLink]="['/add']" class="btn btn-danger">Adduser</button>
+   
+    <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th  scope="col">ID &nbsp;<i class="fa fa-sort"></i></th>
+            <th scope="col">Full Name</th>
+            <th scope="col">LastName</th>
+            <th scope="col">Username</th>
+            <th scope="col">Age </th>
+            <th scope="col">Salary</th>
+            <th scope="col">Card No.</th>
+            <th scope="col">Action</th>       
+    
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let emp of emps">
+            <th scope="row">{{emp.id}}</th>
+            <td>{{emp.firstName}}</td>
+            <td>{{emp.lastName}}</td>
+            <td>{{emp.username}}</td>
+            <td>{{emp.age}}</td>
+            <td>{{emp.salary}}</td>
+            <td>{{(emp.cardno.toString().length > 12 ? '*********' : '')+(emp.cardno.toString() | slice :12 )}}</td>
+            <td> <a [routerLink]="['/edit', emp.id]" class="btn btn-primary">Edit</a></td>
+            <td><button (click)="deleteEmployee(emp.id)" class="btn btn-danger">Delete</button></td>
+          
+    
+          </tr>
+       
+        </tbody>
+      </table>
+    </div>
